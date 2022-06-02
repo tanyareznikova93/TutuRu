@@ -1,6 +1,10 @@
 package com.tanyareznikova.tuturu.di
 
+import android.app.Application
+import androidx.room.Room
 import com.tanyareznikova.tuturu.data.api.GithubApi
+import com.tanyareznikova.tuturu.data.database.UserDatabase
+import com.tanyareznikova.tuturu.data.database.dao.UserDao
 import com.tanyareznikova.tuturu.data.repository.UserRepositoryImpl
 import com.tanyareznikova.tuturu.domain.repository.UserRepository
 import com.tanyareznikova.tuturu.util.Constants
@@ -28,7 +32,18 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUserRepository(api: GithubApi): UserRepository {
-        return UserRepositoryImpl(api)
+    fun provideUserDatabase(app: Application): UserDatabase {
+        return Room.databaseBuilder(
+            app,
+            UserDatabase::class.java,
+            "users.db"
+        ).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(api: GithubApi, db: UserDatabase): UserRepository {
+        return UserRepositoryImpl(api, db.dao)
+    }
+
 }

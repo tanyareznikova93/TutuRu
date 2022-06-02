@@ -57,28 +57,3 @@ data class UserDetailDto(
     val updatedAt: String,
     val url: String
 )
-
-fun UserDetailDto.toUserDetail() : UserDetailModel {
-
-    return UserDetailModel(
-        avatarUrl = avatarUrl,
-        bio = bio,
-        blog = blog,
-        company = company,
-        createdAt = createdAt,
-        email = email,
-        followers = followers,
-        following = following,
-        id = id,
-        location = location,
-        login = login,
-        name = name,
-        nodeId = nodeId,
-        publicRepos = publicRepos,
-        reposUrl = reposUrl,
-        type = type,
-        updatedAt = updatedAt,
-        url = url
-    )
-
-}

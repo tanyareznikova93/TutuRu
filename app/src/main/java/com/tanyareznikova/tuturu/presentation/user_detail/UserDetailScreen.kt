@@ -64,6 +64,11 @@ fun UserDetailScreen(
                             color = MaterialTheme.colors.primary,
                             style = MaterialTheme.typography.h4
                         )
+                        Text(
+                            text = user.login.orEmpty(),
+                            color = MaterialTheme.colors.primary,
+                            style = MaterialTheme.typography.h6
+                        )
                         Spacer(modifier = Modifier.height(4.dp))
                         Column (
                             modifier = Modifier.fillMaxSize(),

@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tanyareznikova.tuturu.domain.model.UserDetailModel
 import com.tanyareznikova.tuturu.domain.use_case.get_user.GetUserUseCase
 import com.tanyareznikova.tuturu.util.Constants
 import com.tanyareznikova.tuturu.util.Resource
@@ -37,7 +38,7 @@ class UserDetailViewModel @Inject constructor(
                 }
                 is Resource.Error -> {
                     _state.value = UserDetailState(
-                        error = result.message ?: "An unexpected error occured"
+                        error = result.message ?: "An unexpected error occurred"
                     )
                 }
                 is Resource.Loading -> {

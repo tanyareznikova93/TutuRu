@@ -1,7 +1,7 @@
 package com.tanyareznikova.tuturu.domain.use_case.get_user
 
-import com.tanyareznikova.tuturu.data.api.dto.toUserDetail
-import com.tanyareznikova.tuturu.data.api.dto.toUserList
+import com.tanyareznikova.tuturu.data.database.UserDatabase
+import com.tanyareznikova.tuturu.data.mapper.*
 import com.tanyareznikova.tuturu.domain.model.UserDetailModel
 import com.tanyareznikova.tuturu.domain.model.UserListModel
 import com.tanyareznikova.tuturu.domain.repository.UserRepository
@@ -19,11 +19,13 @@ class GetUserUseCase @Inject constructor(
     operator fun invoke(username: String): Flow<Resource<UserDetailModel>> = flow {
 
         try {
+
             emit(Resource.Loading<UserDetailModel>())
             val user = repository.getUserByUsername(username).toUserDetail()
             emit(Resource.Success<UserDetailModel>(user))
+
         } catch(e: HttpException) {
-            emit(Resource.Error<UserDetailModel>(e.localizedMessage ?: "An unexpected error occured"))
+            emit(Resource.Error<UserDetailModel>(e.localizedMessage ?: "An unexpected error occurred"))
         } catch(e: IOException) {
             emit(Resource.Error<UserDetailModel>("Couldn't reach server. Check your internet connection."))
         }

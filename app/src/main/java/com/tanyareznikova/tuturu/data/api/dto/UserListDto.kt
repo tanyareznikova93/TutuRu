@@ -38,18 +38,3 @@ data class UserListDto(
     val type: String,
     val url: String
 )
-
-fun UserListDto.toUserList() : UserListModel {
-
-    return UserListModel(
-        avatarUrl = avatarUrl,
-        id = id,
-        login = login,
-        nodeId = nodeId,
-        reposUrl = reposUrl,
-        siteAdmin = siteAdmin,
-        type = type,
-        url = url
-    )
-
-}

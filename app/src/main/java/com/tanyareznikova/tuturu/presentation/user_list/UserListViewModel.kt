@@ -32,13 +32,15 @@ class UserListViewModel @Inject constructor(
                 }
                 is Resource.Error -> {
                     _state.value = UserListState(
-                        error = result.message ?: "An unexpected error occured"
+                        error = result.message ?: "An unexpected error occurred"
                     )
                 }
                 is Resource.Loading -> {
+                    //_state.value = UserListState(isLoading = result.isLoading)
                     _state.value = UserListState(isLoading = true)
                 }
             }
+
         }.launchIn(viewModelScope)
 
     }

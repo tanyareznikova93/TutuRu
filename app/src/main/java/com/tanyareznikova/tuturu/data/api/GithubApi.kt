@@ -17,4 +17,5 @@ interface GithubApi {
     @GET("users/{username}")
     suspend fun getUserByUsername(@Path("username") username: String): UserDetailDto
 
+
 }

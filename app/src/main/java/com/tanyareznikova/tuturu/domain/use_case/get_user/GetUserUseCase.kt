@@ -1,9 +1,7 @@
 package com.tanyareznikova.tuturu.domain.use_case.get_user
 
-import com.tanyareznikova.tuturu.data.database.UserDatabase
-import com.tanyareznikova.tuturu.data.mapper.*
+import com.tanyareznikova.tuturu.data.mapper.toUserDetail
 import com.tanyareznikova.tuturu.domain.model.UserDetailModel
-import com.tanyareznikova.tuturu.domain.model.UserListModel
 import com.tanyareznikova.tuturu.domain.repository.UserRepository
 import com.tanyareznikova.tuturu.util.Resource
 import kotlinx.coroutines.flow.Flow

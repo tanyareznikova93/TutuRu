@@ -5,7 +5,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tanyareznikova.tuturu.domain.model.UserDetailModel
 import com.tanyareznikova.tuturu.domain.use_case.get_user.GetUserUseCase
 import com.tanyareznikova.tuturu.util.Constants
 import com.tanyareznikova.tuturu.util.Resource

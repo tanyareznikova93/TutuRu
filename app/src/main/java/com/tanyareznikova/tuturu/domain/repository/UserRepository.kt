@@ -19,7 +19,9 @@ interface UserRepository {
     */
     suspend fun getUsersFromDb(): List<UserListEntity>
     suspend fun getUserByUsernameFromDb(username: String): UserDetailEntity
-    //suspend fun insertUsersIntoDb(): List<UserListEntity>
-    //suspend fun deleteUsersFromDb(): List<UserListEntity>
+    suspend fun insertUsersIntoDb(userList: List<UserListEntity>)
+    suspend fun deleteUsersFromDb()
+    suspend fun insertUserIntoDb(userDetail: UserDetailEntity)
+    suspend fun deleteUserFromDb()
 
 }

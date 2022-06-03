@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import com.tanyareznikova.tuturu.data.api.GithubApi
 import com.tanyareznikova.tuturu.data.database.UserDatabase
-import com.tanyareznikova.tuturu.data.database.dao.UserDao
 import com.tanyareznikova.tuturu.data.repository.UserRepositoryImpl
 import com.tanyareznikova.tuturu.domain.repository.UserRepository
 import com.tanyareznikova.tuturu.util.Constants

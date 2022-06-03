@@ -2,7 +2,6 @@ package com.tanyareznikova.tuturu.data.api.dto
 
 
 import com.google.gson.annotations.SerializedName
-import com.tanyareznikova.tuturu.domain.model.UserListModel
 
 data class UserListDto(
     @SerializedName("avatar_url")

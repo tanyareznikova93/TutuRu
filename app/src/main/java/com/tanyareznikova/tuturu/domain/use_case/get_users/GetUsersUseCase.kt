@@ -1,8 +1,5 @@
 package com.tanyareznikova.tuturu.domain.use_case.get_users
 
-import androidx.compose.runtime.toMutableStateList
-import com.tanyareznikova.tuturu.data.database.UserDatabase
-import com.tanyareznikova.tuturu.data.database.dao.UserDao
 import com.tanyareznikova.tuturu.data.mapper.toUserList
 import com.tanyareznikova.tuturu.data.mapper.toUserListEntity
 import com.tanyareznikova.tuturu.data.mapper.toUserListModel
@@ -15,15 +12,12 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.properties.Delegates
 
 @Singleton
 class GetUsersUseCase @Inject constructor(
-    private val repository: UserRepository,
-    db: UserDatabase
+    private val repository: UserRepository
 ) {
 
-    private val dao = db.dao
     operator fun invoke(): Flow<Resource<List<UserListModel>>> = flow {
 
         try {
@@ -32,10 +26,10 @@ class GetUsersUseCase @Inject constructor(
             if(getDataFromDB.isEmpty()){
                 emit(Resource.Loading<List<UserListModel>>())
                 val users = repository.getUsers().map { it.toUserList() }
-                //dao.clearUserList()
+                //repository.deleteUsersFromDb()
                 users.forEach { insertData ->
 
-                    dao.insertUserList(
+                    repository.insertUsersIntoDb(
                         listOf(insertData.toUserListEntity()).toMutableList()
                     )
 
